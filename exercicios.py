@@ -81,9 +81,9 @@ def quantos_graus(a:direcoes,b:direcoes)->int:
     '''
     if direcao_noventa_graus(a)==b:
         res=90
-    elif a==direcao_noventa_graus(b):
+    elif direcao_noventa_graus(a)==direcao_menos_noventa_graus(b):
         res=180
-    elif a==direcao_menos_noventa_graus(b):
+    elif a==direcao_noventa_graus(b):
         res=270
     else:
         res=0

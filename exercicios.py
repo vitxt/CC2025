@@ -88,3 +88,108 @@ def quantos_graus(a:direcoes,b:direcoes)->int:
     else:
         res=0
     return res
+
+
+class elevador(Enum):
+    PARADO=auto()
+    SUBINDO=auto()
+    DESCENDO=auto()
+
+def situacao (andar_atual:int,andar_final:int)->elevador:
+    '''
+    >>> situacao (0,3).name
+    'SUBINDO'
+    >>> situacao (3,1).name
+    'DESCENDO'
+    >>> situacao (0,0).name
+    'PARADO'
+
+    '''
+    if andar_atual<andar_final:
+        res = elevador.SUBINDO
+    elif andar_final==andar_atual:
+        res = elevador.PARADO
+    else:
+        res= elevador.DESCENDO    
+    return res
+
+
+
+
+
+
+
+
+
+
+from dataclasses import dataclass
+
+
+@dataclass
+class data:
+    dia:int
+    mes:int
+    ano:int
+
+
+def converte (a:str)->data:
+    '''
+    >>> converte ("21/01/2006")
+    data(dia=21, mes=1, ano=2006)
+    '''
+    d=int(a[0:2])
+    m=int(a[3:5])
+    Ano=int(a[6:])
+    return data(d,m,Ano)
+
+def ultimo_dia (a:data)->bool:
+    '''
+    >>> ultimo_dia (data(20,3,2000))
+    False
+    >>> ultimo_dia (data(31,12,2006))
+    True
+    '''
+    if a.mes==12 and a.dia==31:
+            res=True
+    else:res=False
+
+    return res
+
+def vem_antes (a:data,b:data)->bool:
+    '''
+    >>> vem_antes(data(20,3,2000),data(21,2,1999))
+    False
+    >>> vem_antes(data(21,2,1200),data(13,3,1300))
+    True
+    >>> vem_antes(data(21,2,1200),data(13,3,1200))
+    True
+    >>> vem_antes(data(21,2,1200),data(12,2,1200))
+    False
+    '''
+    if a.ano<b.ano:
+        res=True
+    elif a.ano==b.ano:
+        if a.mes<b.mes:
+            res=True
+        else:
+            if a.dia<b.dia:
+                res=True
+            else:
+                res=False
+    else:
+        res=False
+
+    return res
+
+
+@dataclass
+class resoluoes:
+    altura:int
+    largura:int
+
+def quantos_mpx (a:resoluoes)->int:
+    '''
+    >>> quantos_mpx ()
+    '''
+    return
+    

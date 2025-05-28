@@ -183,13 +183,25 @@ def vem_antes (a:data,b:data)->bool:
 
 
 @dataclass
-class resoluoes:
+class resolucao:
     altura:int
     largura:int
 
-def quantos_mpx (a:resoluoes)->int:
+def quantos_mpx (a:resolucao)->float:
     '''
-    >>> quantos_mpx ()
+    >>> quantos_mpx(resolucao(1000,1000))
+    1.0
     '''
-    return
-    
+    return (a.altura*a.largura)/1000000
+
+class aspecto(Enum):
+    QUATRO_POR_TRES=(auto)
+    DEZESSEIS_POR_NOVE=(auto)
+
+def qual_aspecto (a:resolucao)->aspecto:
+    '''
+    >>> qual_aspecto(resoluco(1920,1080))
+    'DEZESSEIS_POR_NOVE'
+
+
+    '''    

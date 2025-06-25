@@ -64,25 +64,70 @@ def nova_lista(lst:list,i,n):
     [5, 10, 20, 30]
 
 
-    >>> nova_lista([10, 20, 30], -1, 25)
-    [10, 20, 25, 30]
-
-    >>> nova_lista([], 0, 100)
-    [100]
-
-    >>> nova_lista([10, 20, 30], -4, 5)
-    [5, 10, 20, 30]
     '''
     
     res = []
-    if i >= 0:
-        for n in range(0,len(lst)):
-            if n == i:
-                res.append(n)
-            else:
-                res.append(lst[n])
-    else:
+    index = 0
+    for ele in lst:
+        if index != i:
+            res.append(ele)
+        else:
+            res.append(n)
+            res.append(ele)
+        index+=1
         
+    return res
 
-    
+
+def rotaciona (lst:list,n):
+    '''
+    Exemplos:
+    >>> rotaciona([5, 3, 4, 1, 7], 2)
+    [4, 1, 7, 5, 3]
+
+    >>> rotaciona([1, 2, 3, 4, 5], 0)
+    [1, 2, 3, 4, 5]
+
+    >>> rotaciona([1, 2, 3, 4, 5], 5)
+    [1, 2, 3, 4, 5]
+
+    >>> rotaciona([1, 2, 3, 4, 5], 4)
+    [5, 1, 2, 3, 4]
+    '''
+    res = []
+    if n ==0 or n==len(lst):
+        res = lst
+    else:
+        for a in range(0,len(lst)):
+            if a >= n:
+                res.append(lst[a])
+        for a in range(0,len(lst)):
+            if a < n:
+                res.append(lst[a]) 
+    return res
+
+def dobrada(lst:list):
+    '''
+    Exemplos:
+    >>> dobrada([1, 2, 1, 2])
+    True
+
+    >>> dobrada([3, 3])
+    True
+
+    >>> dobrada([1, 2, 3, 1, 2])
+    False
+
+    >>> dobrada([0, 0, 0, 0])
+    True
+    '''
+    assert len(lst)!= 0 
+    i = 0
+    j = len(lst) // 2
+    res = True
+    while res and j!=len(lst):
+        if lst[i] != lst[j]:
+            res = False
+        i+=1
+        j+=1
     return res

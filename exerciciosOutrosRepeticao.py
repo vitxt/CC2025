@@ -131,3 +131,88 @@ def dobrada(lst:list):
         i+=1
         j+=1
     return res
+
+
+'''Projete uma função que determine qual é a menor quantidade de elementos de uma lista que precisam
+ser somados (a partir do início da lista) para que a soma seja maior que um dado valor. Se não for
+possível atingir a soma desejada, a função deve devolver -1'''
+
+def menor_quantidade (lst:list,n):
+    '''
+    >>> menor_quantidade([1, 2, 3, 4], 6)
+    4
+    >>> menor_quantidade([1, 1, 1, 1], 5)
+    -1
+    >>> menor_quantidade([], 0)
+    -1
+    >>> menor_quantidade([5, 5, 5], 5)
+    2
+    >>> menor_quantidade([2, 4, 6, 8], 7)
+    3
+    >>> menor_quantidade([10], 5)
+    1
+    >>> menor_quantidade([10], 15)
+    -1
+    >>> menor_quantidade([0, 0, 0, 1], 1)
+    -1
+    '''
+    elementos = 0
+    soma = 0
+    for a in lst:
+        if soma <= n:
+            soma += a
+            elementos += 1
+    if soma <= n:
+        elementos = -1    
+
+
+    return elementos
+
+'''Projete uma função que receba como entrada uma string e um número natural n e crie uma nova
+string repetindo a string de entrada n vezes (suponha que o operador * não está disponível).'''
+
+def repetidor (texto,n):
+    '''
+    >>> repetidor("a", 3)
+    'aaa'
+    >>> repetidor("ab", 2)
+    'abab'
+    >>> repetidor("", 5)
+    ''
+    >>> repetidor("xyz", 0)
+    ''
+    >>> repetidor("!", 1)
+    '!'
+    >>> repetidor("ab", 1)
+    'ab'
+    >>> repetidor("a", 10)
+    'aaaaaaaaaa'
+    '''
+    res = ''
+    for i in range(n):
+        res = res + texto
+    
+    return res
+
+'''rojete uma função que converta um número natural para uma string. Por exemplo, para o número
+4561 a saída deve ser a string '4561' (suponha que a função str não está disponível). Dica: faça
+divisões sucessivas por 10.'''
+
+def converte (numero):
+    referencia  = '0123456789'
+    res = ''
+    aux = numero
+    divisoes = 0    
+    while aux > 10:
+            aux = aux // 10
+            divisoes = divisoes + 1
+    for a in range(0,10):
+            if aux == a:
+                res = res + referencia[a]
+    while divisoes != divisoes + 1:
+        numero - (aux ** divisoes)
+        for a in range(0,10):
+            if numero == a:
+                res = res + referencia[a]
+
+    return

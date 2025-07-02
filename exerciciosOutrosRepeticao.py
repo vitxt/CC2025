@@ -216,3 +216,74 @@ def converte (numero):
                 res = res + referencia[a]
 
     return
+'''rojete uma função que receba um número inteiro positivo n, e crie a matriz identidade In, com n
+linhas e n colunas, com todos os elementos da diagonal principal (elementos com o mesmo índice)
+iguais a 1 e os demais elementos iguais a 0.'''
+
+def identidade (n):
+    '''
+    >>> identidade(1)
+    [[1]]
+
+    >>> identidade(2)
+    [[1, 0], [0, 1]]
+
+    >>> identidade(4)
+    [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+    '''
+    matriz = []
+    for i in range(n):
+        for i in range(n):
+            linha = [0]*n
+        matriz.append(linha)
+    for i in range(n):
+        matriz[i][i]=1
+    
+    return matriz
+
+'''rojete uma função que encontre os índices de todas as linhas de uma matriz cuja a soma dos elementos
+é zero'''
+
+def zero (matriz:list):
+    '''
+    >>> zero([[1, -1, 0], [0, 0, 0], [2, -2, 0], [1, 2, 0]])
+    [0, 1, 2]
+
+    >>> zero([[0, 0], [0, 0]])
+    [0, 1]
+
+    >>> zero([[1, 2, 3], [4, 5, -9]])
+    [1]
+
+    >>> zero([])
+    []
+
+    >>> zero([[1], [2], [3]])
+    []
+    '''
+    res = []
+    linhas = len(matriz)
+    for n in range(linhas):
+        soma = 0
+        for i in matriz[n]:
+            soma = soma + i 
+        if soma == 0:
+            res.append(n)
+    return res
+
+
+'''Projete uma função que encontre os índices de todas as colunas de uma matriz cuja a soma dos
+elementos é zero'''
+
+
+def coluna_zero(matriz:list):
+    res = []
+    linhas = len(matriz)
+    colunas = len(matriz[0])
+    for n in range(colunas):
+        soma = 0
+        for i in range(linhas):
+            soma = soma + matriz[i][n] 
+        if soma == 0:
+            res.append(n)
+    return res   

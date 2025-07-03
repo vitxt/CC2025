@@ -271,12 +271,15 @@ def zero (matriz:list):
             res.append(n)
     return res
 
-
-'''Projete uma função que encontre os índices de todas as colunas de uma matriz cuja a soma dos
-elementos é zero'''
-
-
 def coluna_zero(matriz:list):
+    '''
+    >>> m1 = [[1, -1,  0], [2,  1, -1], [-3, 0,  1]]
+    >>> coluna_zero(m1)
+    [0, 1, 2]
+    >>> m2 = [[0, 1, -1], [0, 2, -2]]
+    >>> coluna_zero(m2)
+    [0]
+    '''
     res = []
     linhas = len(matriz)
     colunas = len(matriz[0])
@@ -286,4 +289,108 @@ def coluna_zero(matriz:list):
             soma = soma + matriz[i][n] 
         if soma == 0:
             res.append(n)
-    return res   
+    return res
+
+'''rojete uma função que verifique se uma matriz A é simétrica, isto é, para cada elemento aij da matriz,
+aij = aji.'''
+
+def simetrica (matriz:list):
+    '''
+    >>> m1 =    [[1, 2, 3], [2, 5, 6], [3, 6, 9]]
+    >>> simetrica(m1)
+    True
+
+    >>> m2 = [[1, 0], [1, 1]]
+    >>> simetrica(m2)
+    False
+
+    >>> m3 = [[1, 4, 7], [4, 5, 8], [7, 8, 9]]
+    >>> simetrica(m3)
+    True
+    '''
+    '''
+    m1[1][2]==m1[2][1]
+    m1[1][3]==m1[3][1]
+    m1[2][3]==m1[3][2]
+
+    m2[0][1]==m2[1][0]
+
+    '''
+    linhas = len(matriz)
+    colunas = len(matriz[0])
+    res = True
+    for n in range(linhas):
+        for i in range(n+1,colunas):
+            if matriz[n][i]!=matriz[i][n]:
+                res = False
+    
+    return res
+
+
+
+'''A empresa Doce Natureza tem um aplicativo chamado frutamax, que vende frutas online. Você está
+participando do processo de recrutamento e tem um desafio inicial para fazer. Após um cliente fazer
+uma comprar é preciso enviar um email com uma lista dos itens que o usuário comprou. A lista de
+itens deve ser escrita conforme o português, separando os itens com vírgula e usado “e” no final, como
+por exemplo: banana, maça, morango e abacate. O desafio é projetar uma função que junte os itens
+de uma lista de strings nessa forma de texto em português'''
+
+def lista_para_texto (lst :list):
+    '''
+    banana, maça, morango e abacate
+     0      1       2         3
+    >>> lista_para_texto(['banana'])
+    'banana'
+    >>> lista_para_texto(['banana', 'maçã'])
+    'banana e maçã'
+    >>> lista_para_texto(['banana', 'maçã', 'morango'])
+    'banana, maçã e morango'
+    >>> lista_para_texto(['banana', 'maçã', 'morango', 'abacate'])
+    'banana, maçã, morango e abacate'
+    >>> lista_para_texto([])
+    ''
+    '''
+    res = ''
+    quantidade = len(lst)
+    for fruta in range(quantidade):
+        if fruta <= quantidade - 3:
+            res = res + lst[fruta] + ', '
+        elif fruta == quantidade - 2:
+            res = res + lst[fruta] + ' e '
+        else:
+            res = res + lst[fruta]
+    return res
+        
+            
+
+''') O pessoal da Doce Natureza gostou da função que você escreveu, agora eles têm outro desafio para
+você. Ao final de cada mês eles precisam determinar as frutas que mais geraram receitas, eles têm
+uma lista com cada fruta e sua respectiva receita e o seu trabalho é fazer uma função que organize
+essa lista de maneira que as que mais geraram receitas apareçam primeiro. Você pode usar a seguinte
+estratégia, chamada de ordenação por seleção: encontrar a fruta com maior receita, removê-la da lista
+de entrada e adicioná-la no final da lista de saída e repetir o processo até que não tenha mais itens na
+lista de entrada.'''
+
+def ordena (lst: list):
+    '''
+    >>> dados = [['banana', 10], ['maçã', 15], ['morango', 7]]
+                        0              1              2
+    >>> ordena(dados)
+    [['maçã', 15], ['banana', 10], ['morango', 7]]
+
+    >>> ordena([])
+    []
+
+    >>> ordena(['abacate', 5])
+    ['abacate', 5]
+
+    >>> dados2 = [['uva', 20], ['laranja', 20], ['kiwi', 12]]
+    >>> ordena(dados2)
+    [['uva', 20], ['laranja', 20], ['kiwi', 12]]
+    
+    '''
+    res = []
+    for n in range(len(lst)):
+        aux = lst[n]
+        if lst[n][1] < aux
+    return

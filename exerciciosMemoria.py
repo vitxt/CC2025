@@ -152,3 +152,101 @@ def remover_indices_pares(lst:list):
         a -=1
 
     return lst
+'''Projete uma função que modifique uma lista de strings removendo todas as strings vazias (não utilize
+uma lista auxiliar)'''
+
+def rem_str_vazias (lst:list[str]):
+    '''
+    >>> a = ['','abc','','abcd','']
+    >>> rem_str_vazias(a)
+    ['abc', 'abcd']
+
+    >>> b = ['','abc']
+    >>> rem_str_vazias(b)
+    ['abc']
+
+ 
+    '''
+    for i in lst:
+        if i == '':
+            a = 0
+            while lst[a] != '':
+                a += 1
+            for i2 in range(a,len(lst)-1):
+                aux = lst[i2+1]
+                lst[i2+1] = lst[i2]
+                lst[i2] = aux
+            lst.pop()   
+
+    return lst
+
+'''
+Projete uma função que modifique uma lista colocando os valores menores ou iguais a zero antes dos
+valores maiores que zero (não utilize uma lista auxiliar).
+'''
+
+def modifica(lst:list[int]):
+    '''
+    >>> a = [1,2,3,4,-1,2,-3,0]
+    >>> modifica(a)
+    [0, -3, -1, 1, 2, 3, 4, 2]
+
+    >>> b = [0,1,2,-1]
+    >>> modifica(b)
+    [0, -1, 1, 2]
+
+    >>> c = [0,-1]
+    >>> modifica(c)
+    [0, -1]
+    '''
+    a = 0
+    for n in range(len(lst)):
+        if lst[n] <= 0:
+            a += 1
+            for i in range(n,len(lst)-1):
+                aux = lst[i+1]
+                lst[i+1] = lst[i]
+                lst[i] = aux
+    for i2 in range(a - 1):
+        b = len(lst) - 1
+        while b != 0:
+            aux = lst[b-1]
+            lst[b-1] = lst[b]
+            lst[b] = aux
+            b -= 1
+    return lst
+
+def ord_sel (lst:list[int]):
+    '''
+    Ordenação por seleção é um algoritmo para ordenar uma lista de valores. A ideia do algoritmo é
+    selecionar um valor mínimo da lista a partir da posição 0 e colocá-lo na posição 0, depois encontrar
+    um valor mínimo da lista a partir da posição 1 e colocá-lo na posição 1, depois encontrar um valor
+    mínimo da lista a partir da posição 2 … e assim por diante. Por exemplo, vamos considerar a lista
+    [8, 5, 4, 1, 2] (não utilize uma lista auxiliar).
+    O valor mínimo a partir da posição 0 é 1 (que está no índice 3), colocando 1 na posição 0, obtemos
+    [1, 5, 4, 8, 2].
+    O valor mínimo a partir da posição 1 é 2 (que está no índice 4), colocando 2 na posição 1, obtemos
+    [1, 2, 4, 8, 5].
+    2
+    O valor mínimo a partir da posição 2 é 4 (que está no índice 2), colocando 4 na posição 2, obtemos
+    [1, 2, 4, 8, 5].
+    O valor mínimo a partir da posição 3 é 5 (que está no índice 4), colocando 5 na posição 3, obtemos
+    [1, 2, 4, 5, 8].
+    Baseado nesta descrição, projete uma função que faça a ordenação dos valores usando o algoritmo de
+    ordenação por seleção.
+    '''
+    tamanho = len(lst)
+    for a in range(tamanho):
+        
+            b = tamanho - 1
+            while b != a:
+                aux = lst[b-1]
+                lst[b-1] = lst[b]
+                lst[b] = aux
+                b -= 1
+                
+
+
+         
+
+    return
